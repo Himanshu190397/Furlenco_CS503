@@ -1,9 +1,21 @@
 header{
-    background-color: #ff851b;
+    background-color: #F0ECCF;
+}
+
+navbar{
+    color: #FF0000;
 }
 
 .navbar-brand{
     max-height: 60px;
+}
+
+.container{
+    margin:40px;
+}
+
+.col{
+    height:350px;
 }
 
 .container-fluid {
@@ -23,3 +35,10 @@ header{
 .d-flex{
     width: 350px;
 }
+
+.explore {
+    display: flex;
+    justify-content: center;
+}
+
+

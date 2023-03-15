@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+<!--{% set active = "Home" %}-->
+
+{% block title %}
+Chairs
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <p class="display-3 text-center">Our Chairs</p>
+    {% for chair_row in chairs | batch(3, '&nbsp;') %}
+<div class="row">
+    {% for chair in chair_row %}
+    <div class="col-md-6 col-lg-4 my-2">
+            <div class="card">
+              <img src="{{chair['image']}}"
+                   class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-center">{{chair['name']}}</h5>
+                <p class="card-text text-center my-1">
+                    {% set numbers=['1','2','3','4','5'] %}
+                    {% for number in numbers %}
+                    {% if loop.index <= chair['user_rating'] %}
+                    <i class="fa-solid fa-star"></i>
+                    {% else %}
+                    <i class="fa-regular fa-star"></i>
+                    {% endif %}
+                    {% endfor %}
+                    <p class="card-text text-center">${{chair['price']}}</p>
+                </p>
+                <div class="explore">
+                    <a href="#" class="btn btn-primary chair_products" id="c{{chair['chid']}}">View Product</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endfor %}
+</div>
+
+<script src="static/js/chairs.js"></script>
+
+{% endblock %}

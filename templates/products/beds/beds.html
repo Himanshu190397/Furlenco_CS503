@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+<!--{% set active = "Home" %}-->
+
+{% block title %}
+Beds
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <p class="display-3 text-center">Our beds</p>
+    {% for bed_row in beds | batch(3, '&nbsp;') %}
+<div class="row">
+    {% for bed in bed_row %}
+    <div class="col-md-6 col-lg-4 my-2">
+            <div class="card">
+              <img src="{{bed['image']}}"
+                   class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-center">{{bed['name']}}</h5>
+                <p class="card-text text-center my-1">
+                    {% set numbers=['1','2','3','4','5'] %}
+                    {% for number in numbers %}
+                    {% if loop.index <= bed['user_rating'] %}
+                    <i class="fa-solid fa-star"></i>
+                    {% else %}
+                    <i class="fa-regular fa-star"></i>
+                    {% endif %}
+                    {% endfor %}
+                    <p class="card-text text-center">${{bed['price']}}</p>
+                </p>
+                <div class="explore">
+                    <a href="#" class="btn btn-primary bed_products" id="b{{bed['bid']}}">View Product</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endfor %}
+</div>
+<script src="static/js/beds.js"></script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<!--{% set active = "Home" %}-->
+
+{% block title %}
+Wardrobe
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <p class="display-3 text-center" id="wardrobe_heading"></p>
+    <div class="row">
+        <div class="col-md-6 col-lg-4 my-2">
+        </div>
+        <div class="col-md-6 col-lg-4 my-2">
+            <div class="card" id="wardrobe_card">
+                <img src=""  class="card-img-top img-fluid" id="wardrobe_img">
+                <div class="card-body">
+                    <h5 class="card-title text-center" id="wardrobe_category"></h5>
+                    <h5 class="card-text text-center" id="wardrobe_stock"></h5>
+                    <h5 class="card-text text-center" id="wardrobe_price"></h5>
+                    <h5 class="card-text text-center" id="wardrobe_rating">User Rating: </h5>
+                    <div class="explore">
+                        <a href="#" class="btn btn-primary wardrobe_products"><i class="fa-solid fa-cart-shopping px-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 my-2">
+        </div>
+    </div>
+</div>
+
+<script src="static/js/wardrobe.js"></script>
+{% endblock %}

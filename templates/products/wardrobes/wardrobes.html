@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+<!--{% set active = "Home" %}-->
+
+{% block title %}
+Wardrobes
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <p class="display-3 text-center">Our Wardrobes</p>
+    {% for wardrobe_row in wardrobes | batch(3, '&nbsp;') %}
+<div class="row">
+    {% for wardrobe in wardrobe_row %}
+    <div class="col-md-6 col-lg-4 my-2">
+            <div class="card">
+              <img src="{{wardrobe['image']}}"
+                   class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-center">{{wardrobe['name']}}</h5>
+                <p class="card-text text-center my-1">
+                    {% set numbers=['1','2','3','4','5'] %}
+                    {% for number in numbers %}
+                    {% if loop.index <= wardrobe['user_rating'] %}
+                    <i class="fa-solid fa-star"></i>
+                    {% else %}
+                    <i class="fa-regular fa-star"></i>
+                    {% endif %}
+                    {% endfor %}
+                    <p class="card-text text-center">${{wardrobe['price']}}</p>
+                </p>
+                <div class="explore">
+                    <a href="#" class="btn btn-primary wardrobe_products" id="w{{wardrobe['wid']}}">View Product</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endfor %}
+</div>
+
+<script src="static/js/wardrobes.js"></script>
+{% endblock %}
